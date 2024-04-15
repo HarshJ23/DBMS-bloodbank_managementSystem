@@ -7,6 +7,7 @@ export default function page() {
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
       
       <Link href="/"><Button>Home</Button></Link>
+      <Link href="/bloodbank/bb-intro"><Button>Blod bank intro page</Button></Link>
 
       <h1>Blood bank first page</h1>
 
