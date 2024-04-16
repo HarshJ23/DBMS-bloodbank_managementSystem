@@ -17,7 +17,10 @@ export default function Home() {
       <Link href="/bloodbank/addbb-id">
       <Button>Blood bank</Button>
       </Link>
+
+      <Link href="/hospital/h1d">
       <Button>Hospital</Button>
+      </Link>
      </div>
     </main>
   );

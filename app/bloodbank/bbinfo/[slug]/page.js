@@ -27,7 +27,10 @@ const sampleData = [
   ];
 
 
-export default function page() {
+export default function page({params}) {
+
+  const id = params.slug;
+
   return (
     <main>
 
@@ -56,7 +59,7 @@ export default function page() {
 </div>
 
 <Link href="/" className="mx-4"><Button>back to home</Button></Link>
-<Link href="/bloodbank/bb-intro"><Button>bb intro page</Button></Link>
+<Link href={`/bloodbank/bb-intro/${id}`}><Button>bb intro page</Button></Link>
       </main>
   )
 }

@@ -6,11 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Link } from 'next-view-transitions';
 function page() {
   const router = useRouter();
-  const [bloodId, setBloodId] = useState('');
+  const [hId, setHId] = useState('');
   const [redirecting, setRedirecting] = useState(false);
 
   const handleInputChange = (event) => {
-    setBloodId(event.target.value);
+    setHId(event.target.value);
   };
 
   const handleFormSubmit = (event) => {
@@ -21,7 +21,7 @@ function page() {
 
   // Redirect if the state is set
   if (redirecting) {
-    router.push(`/bloodbank/bb-intro/${bloodId}`);
+    router.push(`/hospital/h-intro/${hId}`);
     return null; // Render nothing while redirecting
   }
 
@@ -29,10 +29,10 @@ function page() {
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
 
 <Link href="/"><Button>Home</Button></Link>
-      <Link href="/bloodbank/bb-intro"><Button>Blod bank intro page</Button></Link>
+      <Link href="/bloodbank/bb-intro"><Button>hospital intro page</Button></Link>
       <h1 className="font-semibold">Enter blood id</h1>
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-3 w-2/3">
-        <Input type="text" value={bloodId} onChange={handleInputChange} className="shadow-md" />
+        <Input type="text" value={hId} onChange={handleInputChange} className="shadow-md" />
         <Button type="submit">Submit</Button>
       </form>
     </div>
