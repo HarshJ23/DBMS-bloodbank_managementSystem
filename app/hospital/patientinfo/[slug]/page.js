@@ -6,13 +6,25 @@ import { Input } from "@/components/ui/input";
 const sampleData = [
     {
       id: 1,
-      name: "BITS MEd-C",
-      ID: "BB001",
-      address: "shamirpet",
+      name: "harsh",
+      patientID: "BB001",
+      bloodgrp: "A",
       contact: "123-456-7890"
     },
-   
-     
+    {
+        id: 2,
+        name: "yash",
+        patientID: "BB001",
+        bloodgrp: "B+",
+        contact: "123-456-7890"
+      },
+      {
+        id: 3,
+        name: "sam",
+        patientID: "BB001",
+        bloodgrp: "O",
+        contact: "123-456-7890"
+      },
   ];
 
 
@@ -23,15 +35,20 @@ export default function page({params}) {
   return (
     <main>
 
-    <h1 className="my-4">hospital info info page</h1>
+    <h1 className="my-4">patient info info page</h1>
+    <div className='flex flex-col gap-3 w-2/3 mx-auto' > 
+   <Input className="shadow-md" placeholder="search by name"/>
+   <Input className="shadow-md" placeholder="search by patient ID"/>
 
+
+   </div>
       <div className="overflow-x-auto shadow-md sm:rounded-lg mt-3 mb-6 z-60 mx-3">
   <table className="w-full text-sm text-left text-gray-500">
     <thead className="text-sm text-gray-700 uppercase bg-gray-100">
       <tr>
-        <th scope="col" className="py-3 px-6">Name</th>
-        <th scope="col" className="py-3 px-6">ID</th>
-        <th scope="col" className="py-3 px-6">address</th>
+        <th scope="col" className="py-3 px-6">patient Name</th>
+        <th scope="col" className="py-3 px-6">patient ID</th>
+        <th scope="col" className="py-3 px-6">Lblood grp</th>
         <th scope="col" className="py-3 px-6">Contact</th>
       </tr>
     </thead>
@@ -39,8 +56,8 @@ export default function page({params}) {
       {sampleData.map((row) => (
           <tr key={row.id} className="bg-white border-b hover:bg-gray-100">
           <td className="py-4 px-6">{row.name || 'N/A'}</td>
-          <td className="py-4 px-6">{row.ID|| 'N/A'}</td>
-          <td className="py-4 px-6">{row.address || 'N/A'}</td>
+          <td className="py-4 px-6">{row.patientID|| 'N/A'}</td>
+          <td className="py-4 px-6">{row.bloodgrp || 'N/A'}</td>
           <td className="py-4 px-6">{row.contact || 'N/A'}</td>
         </tr>
       ))}

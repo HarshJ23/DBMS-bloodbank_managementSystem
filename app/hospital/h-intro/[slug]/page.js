@@ -14,11 +14,11 @@ export default function page({params}) {
 
  <Link href="/"><Button>Home</Button></Link>
     <div className=" grid grid-cols-1 sm:grid-cols-5 gap-4">
-<Link href={`/hospital/bbinfo/${id}`}><Button>patient info</Button></Link>
+<Link href={`/hospital/patientinfo/${id}`}><Button>patient info</Button></Link>
 <Link href={`/hospital/hospitalinfo/${id}`}><Button> hospital info</Button></Link>
 <Link href={`/hospital/addpatient/${id}`}><Button> add patient</Button></Link>
-<Link href={`/hospital/donorpage/${id}`}><Button>blood request</Button></Link>
-<Link href={`/hospital/request-blood/${id}`}><Button>new blood request</Button></Link>
+<Link href={`/hospital/blood-requests/${id}`}><Button>blood requests</Button></Link>
+<Link href={`/hospital/addblood-request/${id}`}><Button>new blood request</Button></Link>
 
     </div>
  </main>

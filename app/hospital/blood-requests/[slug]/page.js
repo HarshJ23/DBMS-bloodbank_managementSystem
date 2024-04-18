@@ -1,0 +1,88 @@
+import { Link } from "next-view-transitions";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+
+const sampleData = [
+    {
+      id: 1,
+      name: "harsh",
+      patientID: "pt001",
+      bloodgrp: "A",
+      amount: "4",
+      requestDate : "23-04-2024"
+    },
+    {
+        id: 2,
+        name: "harsh",
+        patientID: "pt001",
+        bloodgrp: "A",
+        amount: "4",
+        requestDate : "23-04-2024"
+      },
+      {
+        id: 3,
+        name: "harsh",
+        patientID: "pt001",
+        bloodgrp: "A",
+        amount: "4",
+        requestDate : "23-04-2024"
+      },
+      {
+        id: 4,
+        name: "harsh",
+        patientID: "pt001",
+        bloodgrp: "A",
+        amount: "4",
+        requestDate : "23-04-2024"
+      },
+   
+  ];
+
+
+export default function page({params}) {
+
+  const id = params.slug;
+
+  return (
+    <main>
+
+    <h1 className="my-4">patient info info page</h1>
+    <div className='flex flex-col gap-3 w-2/3 mx-auto' > 
+   <Input className="shadow-md" placeholder="search by name"/>
+   <Input className="shadow-md" placeholder="search by patient ID"/>
+
+
+   </div>
+      <div className="overflow-x-auto shadow-md sm:rounded-lg mt-3 mb-6 z-60 mx-3">
+  <table className="w-full text-sm text-left text-gray-500">
+    <thead className="text-sm text-gray-700 uppercase bg-gray-100">
+      <tr>
+        <th scope="col" className="py-3 px-6">patient Name</th>
+        <th scope="col" className="py-3 px-6">patient ID</th>
+        <th scope="col" className="py-3 px-6">blood grp</th>
+        <th scope="col" className="py-3 px-6">amount(Litre)</th>
+        <th scope="col" className="py-3 px-6">request date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {sampleData.map((row) => (
+          <tr key={row.id} className="bg-white border-b hover:bg-gray-100">
+          <td className="py-4 px-6">{row.name || 'N/A'}</td>
+          <td className="py-4 px-6">{row.patientID|| 'N/A'}</td>
+          <td className="py-4 px-6">{row.bloodgrp || 'N/A'}</td>
+          <td className="py-4 px-6">{row.amount || 'N/A'}</td>
+          <td className="py-4 px-6">{row.requestDate || 'N/A'}</td>
+
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<Link href="/" className="mx-4"><Button>back to home</Button></Link>
+<Link href={`/hospital/h-intro/${id}`}><Button>h intro page</Button></Link>
+      </main>
+  )
+}
