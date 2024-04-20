@@ -48,6 +48,7 @@ export default function Page({ params }) {
     gender: '',
     age: '',
     blood_group: '',
+    quantity: '',
     blood_bank_id: params.slug, // Extracting blood bank ID from params.slug
   });
   const [error, setError] = useState(null);
@@ -65,6 +66,7 @@ export default function Page({ params }) {
     e.preventDefault();
     try {
       console.log(formData); // Displaying entered fields in the console
+
       const response = await fetch('http://localhost:3000/add-donor', {
         method: 'POST',
         headers: {
@@ -131,6 +133,13 @@ export default function Page({ params }) {
               placeholder="Enter blood group"
               name="blood_group"
               value={formData.blood_group}
+              onChange={handleChange}
+            />
+            <Input
+              className="shadow-md"
+              placeholder="quantity"
+              name="quantity"
+              value={formData.quantity}
               onChange={handleChange}
             />
             <Button type="submit" className="my-3 justify-center">

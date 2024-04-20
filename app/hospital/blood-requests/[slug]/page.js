@@ -1,48 +1,38 @@
+'use client'
 import { Link } from "next-view-transitions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useEffect , useState } from "react";
 
 
-const sampleData = [
-    {
-      id: 1,
-      name: "harsh",
-      patientID: "pt001",
-      bloodgrp: "A",
-      amount: "4",
-      requestDate : "23-04-2024"
-    },
-    {
-        id: 2,
-        name: "harsh",
-        patientID: "pt001",
-        bloodgrp: "A",
-        amount: "4",
-        requestDate : "23-04-2024"
-      },
-      {
-        id: 3,
-        name: "harsh",
-        patientID: "pt001",
-        bloodgrp: "A",
-        amount: "4",
-        requestDate : "23-04-2024"
-      },
-      {
-        id: 4,
-        name: "harsh",
-        patientID: "pt001",
-        bloodgrp: "A",
-        amount: "4",
-        requestDate : "23-04-2024"
-      },
-   
-  ];
+
 
 
 export default function page({params}) {
+  const [requestData , setRequestData] =  useState([]);
 
   const id = params.slug;
+  useEffect(()=>{
+    const getRequests = async()=>{
+      try {
+        const response = await fetch('http://localhost:3000/getall?',{
+          method : "GET",
+          headers:{
+            "Content-type" : "application/json"
+          }
+        });
+  
+        const data = await response.json();
+        setRequestData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+
+      }
+    }
+    
+    getRequests();
+
+  },[])
 
   return (
     <main>
@@ -58,22 +48,28 @@ export default function page({params}) {
   <table className="w-full text-sm text-left text-gray-500">
     <thead className="text-sm text-gray-700 uppercase bg-gray-100">
       <tr>
-        <th scope="col" className="py-3 px-6">patient Name</th>
-        <th scope="col" className="py-3 px-6">patient ID</th>
+        <th scope="col" className="py-3 px-6">hospital id</th>
+        <th scope="col" className="py-3 px-6">quantity</th>
         <th scope="col" className="py-3 px-6">blood grp</th>
-        <th scope="col" className="py-3 px-6">amount(Litre)</th>
         <th scope="col" className="py-3 px-6">request date</th>
+        <th scope="col" className="py-3 px-6">patient id</th>
+        <th scope="col" className="py-3 px-6">Status</th>
+
+
 
       </tr>
     </thead>
     <tbody>
-      {sampleData.map((row) => (
+      {requestData.map((row) => (
           <tr key={row.id} className="bg-white border-b hover:bg-gray-100">
-          <td className="py-4 px-6">{row.name || 'N/A'}</td>
-          <td className="py-4 px-6">{row.patientID|| 'N/A'}</td>
-          <td className="py-4 px-6">{row.bloodgrp || 'N/A'}</td>
-          <td className="py-4 px-6">{row.amount || 'N/A'}</td>
+          <td className="py-4 px-6">{row.hospitalId || 'N/A'}</td>
+          <td className="py-4 px-6">{row.quantity|| 'N/A'}</td>
+          <td className="py-4 px-6">{row.bloodType || 'N/A'}</td>
           <td className="py-4 px-6">{row.requestDate || 'N/A'}</td>
+          <td className="py-4 px-6">{row.patientId|| 'N/A'}</td>
+          <td className="py-4 px-6">{row.status ? "Approved" : "Not approved"}</td>
+
+
 
         </tr>
       ))}

@@ -44,6 +44,7 @@ export default function Page({ params }) {
     gender: '',
     age: '',
     blood_group: '',
+    quantity: '',
   });
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
@@ -61,7 +62,7 @@ export default function Page({ params }) {
     try {
       console.log(formData); // Displaying entered fields in the console
 
-      const hospitalId = params.slug; // Assuming slug is like "hospital-hid"
+      const hospitalId = params.slug; // Extracting hospital ID from params.slug
       const response = await fetch('http://localhost:3000/add_patient', {
         method: 'POST',
         headers: {
@@ -84,7 +85,7 @@ export default function Page({ params }) {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="font-semibold text-3xl">Add patient page</h1>
+      <h1 className="font-semibold text-3xl">Add patient page testing</h1>
       <Link href="/">
         <Button>Back to Home page</Button>
       </Link>
@@ -128,6 +129,13 @@ export default function Page({ params }) {
               placeholder="Enter blood group"
               name="blood_group"
               value={formData.blood_group}
+              onChange={handleChange}
+            />
+            <Input
+              className="shadow-md"
+              placeholder="quantity"
+              name="quantity"
+              value={formData.quantity}
               onChange={handleChange}
             />
             <Button type="submit" className="my-3 justify-center">

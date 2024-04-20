@@ -1,24 +1,37 @@
+'use client'
 import { Link } from "next-view-transitions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {useState , useEffect} from "react";
 
 
-const sampleData = [
-    {
-      id: 1,
-      name: "BITS MEd-C",
-      ID: "BB001",
-      address: "shamirpet",
-      contact: "123-456-7890"
-    },
-   
-     
-  ];
+
 
 
 export default function page({params}) {
 
   const id = params.slug;
+  const [hospitalData, setHospitalData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/get_hospital_info', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ id: parseInt(params.slug) }) // Assuming params.slug is a string
+        });
+        const data = await response.json();
+        setHospitalData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [params.slug]); // 
 
   return (
     <main>
@@ -36,12 +49,12 @@ export default function page({params}) {
       </tr>
     </thead>
     <tbody>
-      {sampleData.map((row) => (
+      {hospitalData.map((row) => (
           <tr key={row.id} className="bg-white border-b hover:bg-gray-100">
           <td className="py-4 px-6">{row.name || 'N/A'}</td>
-          <td className="py-4 px-6">{row.ID|| 'N/A'}</td>
-          <td className="py-4 px-6">{row.address || 'N/A'}</td>
-          <td className="py-4 px-6">{row.contact || 'N/A'}</td>
+          <td className="py-4 px-6">{row.id|| 'N/A'}</td>
+          <td className="py-4 px-6">{row.location || 'N/A'}</td>
+          <td className="py-4 px-6">{row.number || 'N/A'}</td>
         </tr>
       ))}
     </tbody>
