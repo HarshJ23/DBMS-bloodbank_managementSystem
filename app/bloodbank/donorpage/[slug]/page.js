@@ -131,11 +131,8 @@ export default function Page({ params }) {
 
   return (
     <main>
-      <h1 className="my-4">Donors Info Page</h1>
-      <div className='flex flex-col gap-3 w-2/3 mx-auto'>
-        <Input className="shadow-md" placeholder="Search by Name" />
-        <Input className="shadow-md" placeholder="Search by Patient ID" />
-      </div>
+      <h1 className="my-4">All Donors Information</h1>
+     
       <div className="overflow-x-auto shadow-md sm:rounded-lg mt-3 mb-6 z-60 mx-3">
         <table className="w-full text-sm text-left text-gray-500">
           <thead className="text-sm text-gray-700 uppercase bg-gray-100">
@@ -168,10 +165,10 @@ export default function Page({ params }) {
       </div>
 
       <Link href="/" className="mx-4">
-        <Button>Back to Home</Button>
+        <Button>Back to main</Button>
       </Link>
       <Link href={`/bloodbank/bb-intro/${id}`}>
-        <Button>Hospital Intro Page</Button>
+        <Button>blood bank home</Button>
       </Link>
     </main>
   );

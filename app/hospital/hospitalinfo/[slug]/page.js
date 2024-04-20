@@ -62,7 +62,7 @@ export default function page({params}) {
 </div>
 
 <Link href="/" className="mx-4"><Button>back to home</Button></Link>
-<Link href={`/hospital/h-intro/${id}`}><Button>h intro page</Button></Link>
+<Link href={`/hospital/h-intro/${id}`}><Button>hospital home page</Button></Link>
       </main>
   )
 }

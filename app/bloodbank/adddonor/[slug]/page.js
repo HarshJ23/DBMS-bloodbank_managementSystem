@@ -90,11 +90,11 @@ export default function Page({ params }) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="font-semibold text-3xl">Add donor page</h1>
-      <Link href="/">
-        <Button>Back to Home page</Button>
-      </Link>
       <Link href={`/bloodbank/bb-intro/${params.slug}`} className="my-3">
-        <Button>BB-intro page</Button>
+        <Button>Blood bank home</Button>
+      </Link>
+      <Link href="/">
+        <Button>Back to main</Button>
       </Link>
       <div className="flex flex-col my-3">
         <p>Enter your details</p>

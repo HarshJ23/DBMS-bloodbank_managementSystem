@@ -24,11 +24,8 @@ export default function Page({ params }) {
 
   return (
     <main>
-      <h1 className="my-4">Patient Info Page</h1>
-      <div className='flex flex-col gap-3 w-2/3 mx-auto'>
-        <Input className="shadow-md" placeholder="Search by Name" />
-        <Input className="shadow-md" placeholder="Search by Patient ID" />
-      </div>
+      <h1 className="my-4 mx-6">All Patient Info</h1>
+   
       <div className="overflow-x-auto shadow-md sm:rounded-lg mt-3 mb-6 z-60 mx-3">
         <table className="w-full text-sm text-left text-gray-500">
           <thead className="text-sm text-gray-700 uppercase bg-gray-100">
@@ -64,7 +61,7 @@ export default function Page({ params }) {
         <Button>Back to Home</Button>
       </Link>
       <Link href={`/hospital/h-intro/${id}`}>
-        <Button>Hospital Intro Page</Button>
+        <Button>Hospital home Page</Button>
       </Link>
     </main>
   );

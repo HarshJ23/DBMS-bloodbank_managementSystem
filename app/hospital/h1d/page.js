@@ -27,12 +27,11 @@ function page() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
-
+<h1>Hospital login</h1>
 <Link href="/"><Button>Home</Button></Link>
-      <Link href="/bloodbank/bb-intro"><Button>hospital intro page</Button></Link>
-      <h1 className="font-semibold">Enter blood id</h1>
+      <h1 className="font-semibold">Enter your hospital id</h1>
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-3 w-2/3">
-        <Input type="text" value={hId} onChange={handleInputChange} className="shadow-md" />
+        <Input type="text" value={hId} onChange={handleInputChange} className="shadow-md"  placeholder="enter hospital ID"/>
         <Button type="submit">Submit</Button>
       </form>
     </div>

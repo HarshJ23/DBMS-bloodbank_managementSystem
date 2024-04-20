@@ -51,10 +51,10 @@ export default function Page({ params }) {
       </div>
 
       <Link href="/" className="mx-4">
-        <Button>Back to Home</Button>
+        <Button>Back to main</Button>
       </Link>
       <Link href={`/bloodbank/bb-intro/${params.slug}`}>
-        <Button>BB Intro Page</Button>
+        <Button>Blood bank home</Button>
       </Link>
     </main>
   );
