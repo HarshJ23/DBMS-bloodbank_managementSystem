@@ -48,7 +48,7 @@ export default function Page({ params }) {
     gender: '',
     age: '',
     blood_group: '',
-    blood_bank_id: params.slug.split('-')[1], // Extracting blood bank ID from params.slug
+    blood_bank_id: params.slug, // Extracting blood bank ID from params.slug
   });
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
@@ -73,7 +73,6 @@ export default function Page({ params }) {
         body: JSON.stringify({
           blood_bank_id: formData.blood_bank_id,
           ...formData,
-          quantity: 60, // assuming this is a constant quantity
         }),
       });
       if (!response.ok) {
@@ -132,13 +131,6 @@ export default function Page({ params }) {
               placeholder="Enter blood group"
               name="blood_group"
               value={formData.blood_group}
-              onChange={handleChange}
-            />
-            <Input
-              className="shadow-md"
-              placeholder="blood bank ID"
-              name="blood_bank_id"
-              value={formData.blood_bank_id}
               onChange={handleChange}
             />
             <Button type="submit" className="my-3 justify-center">

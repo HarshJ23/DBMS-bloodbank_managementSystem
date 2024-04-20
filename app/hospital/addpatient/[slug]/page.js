@@ -59,7 +59,9 @@ export default function Page({ params }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const hospitalId = params.slug.split('-')[1]; // Assuming slug is like "hospital-hid"
+      console.log(formData); // Displaying entered fields in the console
+
+      const hospitalId = params.slug; // Assuming slug is like "hospital-hid"
       const response = await fetch('http://localhost:3000/add_patient', {
         method: 'POST',
         headers: {
@@ -68,7 +70,6 @@ export default function Page({ params }) {
         body: JSON.stringify({
           hospital_id: hospitalId,
           ...formData,
-          quantity: 50,
         }),
       });
       if (!response.ok) {
